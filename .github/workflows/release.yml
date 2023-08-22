@@ -12,9 +12,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf
-      with:
-        swift-version: "5.8.0"
     - name: Build
       run: swift build -v --configuration release
 
@@ -23,4 +20,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: xcresultscrapper
-        path: ./.build/release/XCResultScrapperClient
+        path: .build/arm64-apple-macosx/release/XCResultScrapperClient
