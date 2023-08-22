@@ -23,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: xcresultscrapper
-        path: .build/arm64-apple-macosx/release/XCResultScrapperClient
+        path: ./.build/arm64-apple-macosx/release/XCResultScrapperClient
