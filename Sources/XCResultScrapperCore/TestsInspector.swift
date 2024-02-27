@@ -9,7 +9,7 @@ public struct TestsInspector {
         public static let swiftFiles = "Fatal error: (.+.swift)"
     }
 
-    public init() { }
+    public init() {}
 
     /// Get failed tests grouped by probable reasons for a given tests run summary
     /// - Parameters:

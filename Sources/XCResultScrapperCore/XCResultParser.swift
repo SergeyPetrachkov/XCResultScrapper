@@ -8,7 +8,7 @@ public struct XCResultParser {
         public static let swiftFiles = "Fatal error: (.+.swift)"
     }
 
-    public init() { }
+    public init() {}
 
     public func parse(xcresultPath: String) throws -> XCResult {
         try Shell.parseXCResult(xcresultPath: xcresultPath)
@@ -36,7 +36,8 @@ public struct XCResultParser {
                         try testSuite.testClasses.mutateEach { testClass in
                             try testClass.subtests.values.mutateEach { testCase in
                                 if testCase.testStatus.value == TestResult.failure.rawValue,
-                                   let id = testCase.summaryRef?.id.value {
+                                    let id = testCase.summaryRef?.id.value
+                                {
                                     var failureReport = try Shell.extractFailedTestSummary(
                                         xcresultPath: xcresultPath,
                                         id: id
@@ -106,7 +107,8 @@ public struct XCResultParser {
             recursively: true
         ) { attachment in
             if let payloadId = attachment.payloadRef?.id.value,
-               attachment.name.value == Constants.diagnosticsReportKey {
+                attachment.name.value == Constants.diagnosticsReportKey
+            {
                 crashReportsIds.append(payloadId)
             }
         }

@@ -1,7 +1,7 @@
 import XCResultScrapperUtils
 import Foundation
 
-public protocol TitledCoverageReportContainer: NamedModel, CoverageReportContainer { }
+public protocol TitledCoverageReportContainer: NamedModel, CoverageReportContainer {}
 
 public extension TitledCoverageReportContainer {
     var coverageSummary: String {

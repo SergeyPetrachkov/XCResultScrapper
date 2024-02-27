@@ -71,11 +71,13 @@ public struct CoverageScrapper: Scrapper {
             autoreleasepool {
                 for verboseCoverageFile in verboseCoverage {
                     let commonPathToTrim = verboseCoverageFile.key.commonPrefix(with: report.targets.first?.buildProductPath ?? "")
-                    let newFileName = String(verboseCoverageFile
-                        .key
-                        .suffix(
-                            from: verboseCoverageFile.key.range(of: commonPathToTrim)?.upperBound ?? verboseCoverageFile.key.startIndex
-                        ))
+                    let newFileName = String(
+                        verboseCoverageFile
+                            .key
+                            .suffix(
+                                from: verboseCoverageFile.key.range(of: commonPathToTrim)?.upperBound ?? verboseCoverageFile.key.startIndex
+                            )
+                    )
 
                     fixedCoverage[newFileName, default: []] += verboseCoverageFile
                         .value
@@ -130,7 +132,7 @@ public struct CoverageScrapper: Scrapper {
                             let linesToIgnore = Array(
                                 stride(from: function.lineNumber, to: function.lineNumber + function.executableLines, by: 1)
                             )
-                            
+
                             let ignoredUnit = IgnoredCoverageUnit(
                                 fileName: fileName,
                                 functionName: function.name,

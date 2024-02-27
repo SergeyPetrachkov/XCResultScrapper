@@ -24,13 +24,13 @@ public struct SonarQubeRenderer: ReportRendering {
         allFiles.forEach { file in
             let fileXML = XML(name: "file", attributes: ["path": file.path])
             file.functions.forEach { function in
-                
+
             }
             coverageXML.addChild(fileXML)
         }
         let header = "<?xml version=\"1.0\"?>\n"
         let xml = coverageXML.toXMLString()
-        return header+xml
+        return header + xml
     }
 
     public func render(verboseCoverage: VerboseCoverageArchive) -> String {
@@ -49,7 +49,7 @@ public struct SonarQubeRenderer: ReportRendering {
         }
         let header = "<?xml version=\"1.0\"?>\n"
         let xml = coverageXML.toXMLString()
-        return header+xml
+        return header + xml
     }
 
     public func render(ignoredCoverageUnits: [IgnoredCoverageUnit]) -> String {
@@ -59,7 +59,7 @@ public struct SonarQubeRenderer: ReportRendering {
                 name: "file",
                 attributes: [
                     "path": ignored.fileName,
-                    "function": ignored.functionName,
+                    "function": ignored.functionName
                 ]
             )
             ignored.lines.forEach { line in
@@ -70,6 +70,6 @@ public struct SonarQubeRenderer: ReportRendering {
         }
         let header = "<?xml version=\"1.0\"?>\n"
         let xml = coverageXML.toXMLString()
-        return header+xml
+        return header + xml
     }
 }

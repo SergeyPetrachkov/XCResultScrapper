@@ -25,15 +25,18 @@ enum Shell {
         var localizedDescription: String {
             switch self {
             case .coverageExtractionFailed:
-                return "Failed to extract coverage report from xcresult. Try `xcrun xccov view --report --json /path/to/your/res.xcresult > ./coverage.json` in Terminal"
+                return
+                    "Failed to extract coverage report from xcresult. Try `xcrun xccov view --report --json /path/to/your/res.xcresult > ./coverage.json` in Terminal"
             case .xcresultParsingFailed:
                 return "Failed to parse xcresult. Try `xcrun xcresulttool get --path /path/to/your/res.xcresult --format json` in Terminal"
             case .testsSummariesExtractionFailed:
-                return "Failed to extract tests summaries from xcresult. Try `xcrun xcresulttool get --path /path/to/your/res.xcresult --format json --id {id}` in Terminal"
+                return
+                    "Failed to extract tests summaries from xcresult. Try `xcrun xcresulttool get --path /path/to/your/res.xcresult --format json --id {id}` in Terminal"
             case .stacktraceExtractionFailed:
                 return "Failed to extract stacktrace from xcresult. Try `xcrun xcresulttool get --path /path/to/your/res.xcresult --id {id}` in Terminal"
             case .coverageArchiveExtractionFailed:
-                return "Failed to extract coverage archive from xcresult. Try `xcrun xccov view --archive --json /path/to/your/res.xcresult > ./coverage.json` in Terminal"
+                return
+                    "Failed to extract coverage archive from xcresult. Try `xcrun xccov view --archive --json /path/to/your/res.xcresult > ./coverage.json` in Terminal"
             }
         }
 
@@ -231,7 +234,8 @@ enum Shell {
             arguments: arguments
         )
         if let stackTraceData = stackTraceData,
-           let stackTrace = String(data: stackTraceData, encoding: .utf8) {
+            let stackTrace = String(data: stackTraceData, encoding: .utf8)
+        {
             return stackTrace
         } else {
             throw Errors.stacktraceExtractionFailed

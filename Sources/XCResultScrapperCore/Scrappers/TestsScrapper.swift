@@ -3,7 +3,7 @@ import XCResultScrapperReport
 
 /// This class combines parsing, inspecting and reporting logic. A kind of a usecase.
 ///
-/// Since I don't plan to support anything else but Junit and XC format, you won't find Protocols and generics here :) 
+/// Since I don't plan to support anything else but Junit and XC format, you won't find Protocols and generics here :)
 public struct TestsScrapper: Scrapper {
 
     private let xcresultPath: String
@@ -30,13 +30,14 @@ public struct TestsScrapper: Scrapper {
         let report = testsInspector.examine(bundle: testResults)
 
         let renderedReports = reportRenderer.render(testsRunReport: report)
-		if let outputPath,
-		   !reportRenderer.fileExtension.isEmpty {
+        if let outputPath,
+            !reportRenderer.fileExtension.isEmpty
+        {
             for renderedReport in renderedReports.enumerated() {
                 try write(report: renderedReport.element, named: "TestsReport_\(renderedReport.offset).\(reportRenderer.fileExtension)", to: outputPath)
             }
-		} else {
-			renderedReports.forEach { print($0) }
-		}
+        } else {
+            renderedReports.forEach { print($0) }
+        }
     }
 }

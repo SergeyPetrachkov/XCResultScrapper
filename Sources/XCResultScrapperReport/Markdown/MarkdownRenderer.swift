@@ -6,16 +6,16 @@ public struct MarkdownRenderer: ReportRendering {
         "md"
     }
 
-    public init() { }
+    public init() {}
 
     public func render(testsRunReport: TestsRunReport) -> [String] {
         if testsRunReport.allFailures.isEmpty {
             return [
-            """
-            ## Tests run report:
+                """
+                ## Tests run report:
 
-            ✅ All good here! 🚀
-            """
+                ✅ All good here! 🚀
+                """
             ]
         } else {
 
@@ -61,9 +61,9 @@ public struct MarkdownRenderer: ReportRendering {
         var markdown = "## Coverage report\n"
 
         markdown += """
-        | Target | Coverage | Status |
-        | --- | --- | --- |\n
-        """
+            | Target | Coverage | Status |
+            | --- | --- | --- |\n
+            """
 
         markdown += coverageReport
             .children
@@ -86,7 +86,6 @@ public struct MarkdownRenderer: ReportRendering {
 
         return markdown
     }
-
 
     private func headerForAllTests() -> String {
         """

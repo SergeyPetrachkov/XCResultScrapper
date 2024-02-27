@@ -6,7 +6,7 @@ public protocol Scrapper {
 
 public extension Scrapper {
     func write(report: String, named name: String, to outputPath: String) throws {
-        let outputDirectoryUrl = URL(fileURLWithPath: outputPath, isDirectory: true) 
+        let outputDirectoryUrl = URL(fileURLWithPath: outputPath, isDirectory: true)
         let url = outputDirectoryUrl.appendingPathComponent(name)
         if let data = report.data(using: .utf8) {
             try FileManager.default.createDirectory(

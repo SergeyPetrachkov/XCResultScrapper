@@ -66,7 +66,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/SergeyPetrachkov/SwiftyXML", branch: "master"),
-		.package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.2")
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.2")
     ],
     targets: [
         utilsTarget,
@@ -77,7 +77,7 @@ let package = Package(
         .testTarget(
             name: "XCResultScrapperTests",
             dependencies: ["XCResultScrapperCore"]
-        ),
+        )
     ]
 )
 

@@ -42,7 +42,7 @@ public struct JunitRenderer: ReportRendering {
                     "name": target.targetName.value,
                     "tests": allCases.count,
                     "failures": allCases.filter { $0.testStatus.value == TestResult.failure.rawValue }.count,
-                    "time": suite.duration,
+                    "time": suite.duration
                 ]
             )
 
@@ -53,13 +53,14 @@ public struct JunitRenderer: ReportRendering {
                         [
                             "classname": testClass.name.value,
                             "name": testCase.name.value,
-                            "time": testCase.resolvedDuration,
+                            "time": testCase.resolvedDuration
                         ]
                     )
                     if testCase.testStatus.value == TestResult.failure.rawValue {
                         let failureXML = XML(name: "failure")
                         if let failureReport = testCase.failureReport,
-                           let lastSummary = failureReport.failureSummaries.values.last {
+                            let lastSummary = failureReport.failureSummaries.values.last
+                        {
 
                             var message = "\(lastSummary.message.value) File=\(lastSummary.fileName?.value ?? "<nil>"); "
                             if let lineNumber = lastSummary.lineNumber?.value {
@@ -85,6 +86,6 @@ public struct JunitRenderer: ReportRendering {
         }
         let header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
         let xml = sessionXML.toXMLString()
-        return header+xml
+        return header + xml
     }
 }

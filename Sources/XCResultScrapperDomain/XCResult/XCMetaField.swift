@@ -12,7 +12,7 @@ public struct XCMetaField: Codable {
 }
 
 // MARK: - Generics
-public struct TypedValuesContainer<Type: Codable, ValueType: Codable> : Codable {
+public struct TypedValuesContainer<Type: Codable, ValueType: Codable>: Codable {
     public let type: Type
     public var values: [ValueType]
 
